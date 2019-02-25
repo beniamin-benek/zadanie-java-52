@@ -1,3 +1,5 @@
+import java.util.Objects;
+
 class Player implements Comparable<Player> {
 
     private String firstName;
@@ -19,6 +21,21 @@ class Player implements Comparable<Player> {
             return -1;
         else
             return this.lastName.compareTo(o.lastName);
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        Player player = (Player) o;
+        return score == player.score &&
+                Objects.equals(firstName, player.firstName) &&
+                Objects.equals(lastName, player.lastName);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(firstName, lastName, score);
     }
 
     @Override
