@@ -8,10 +8,11 @@ class DataReader {
         Scanner scanner = new Scanner(System.in);
         LinkedHashMap<Integer,Player> players = new LinkedHashMap<>();
         int i = 0;
+        String input;
 
         do {
             System.out.println("Podaj wynik kolejnego gracza (lub stop):");
-            String input = scanner.nextLine();
+            input = scanner.nextLine();
             if (!input.equals("stop")) {
                 String[] data = input.split(" ");
                 if (data.length != 3) throw new NullPointerException();
@@ -24,7 +25,7 @@ class DataReader {
                     System.err.println("Podałeś nieprawidłowy wynik. Spróbuj ponownie:");
                 }
             }
-        } while (!scanner.nextLine().equals("stop"));
+        } while (!input.equals("stop"));
 
         return players;
     }
